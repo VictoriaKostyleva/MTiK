@@ -8,11 +8,11 @@ public class ParserTest {
     @Test
     public void calculateTest1() throws Exception {
 
-        Reader str = new StringReader("2+3^2");
+        Reader str = new StringReader("2+3");
         Lexer lexer = new Lexer(str);
         Parser parser = new Parser(lexer);
 
-        assertEquals(11, parser.calculate());
+        assertEquals(5, parser.calculate());
     }
 
     @Test
@@ -28,7 +28,7 @@ public class ParserTest {
     @Test(expected = WrongExpression.class)
     public void calculateTest3() throws Exception {
 
-        Reader str = new StringReader("-2+3*2))");
+        Reader str = new StringReader("-2+3*2)");
         Lexer lexer = new Lexer(str);
         Parser parser = new Parser(lexer);
         parser.calculate();
@@ -37,7 +37,7 @@ public class ParserTest {
     @Test(expected = WrongExpression.class)
     public void calculateTest4() throws Exception {
 
-        Reader str = new StringReader("(-2+3*2");
+        Reader str = new StringReader("(-2+3*2))");
         Lexer lexer = new Lexer(str);
         Parser parser = new Parser(lexer);
         parser.calculate();

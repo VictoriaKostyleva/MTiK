@@ -31,7 +31,7 @@ public class Parser {
                 term -= parseTerm();
             }
         }
-        currentLexeme = lexer.getLexeme();
+//        currentLexeme = lexer.getLexeme();
         return term;
     }
 
@@ -44,6 +44,7 @@ public class Parser {
             } else {
                 temp /= parseTerm();
             }
+            currentLexeme = lexer.getLexeme();//TODO
         }
         return temp;
     }
@@ -53,7 +54,7 @@ public class Parser {
 
         if (currentLexeme.getLexemeType() == Types.LexemeType.POWER) {
             int factor = parseFactor();
-//            currentLexeme = lexer.getLexeme();
+            currentLexeme = lexer.getLexeme();//TODO
             return (int) Math.pow(power, factor);
         } else {
             return power;
@@ -80,6 +81,7 @@ public class Parser {
                 if(currentLexeme.getLexemeType() != Types.LexemeType.RIGHT_BR) {
                     throw new WrongExpression("No right brunch");
                 } else {
+                    currentLexeme = lexer.getLexeme();
                     return res;
                 }
 
@@ -98,6 +100,7 @@ public class Parser {
                 if(currentLexeme.getLexemeType() != Types.LexemeType.RIGHT_BR) {
                     throw new WrongExpression("No right brunch");
                 } else {
+                    currentLexeme = lexer.getLexeme();
                     return res;
                 }
 
