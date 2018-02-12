@@ -3,7 +3,6 @@ import java.io.IOException;
 public class Parser {
     private Lexer lexer;
     private Lexeme currentLexeme;
-//    private Boolean flag = false;
 
     public Parser(Lexer lexer) {
         this.lexer = lexer;
@@ -11,8 +10,6 @@ public class Parser {
 
     public int calculate() throws IOException, WrongExpression {
         int result = parseExpression();
-
-//        System.out.println(currentLexeme.getLexemeType());
 
         if(currentLexeme.getLexemeType() != Types.LexemeType.EOF) {
             throw new WrongExpression("Too many right brunches");
@@ -53,7 +50,7 @@ public class Parser {
 
         if (currentLexeme.getLexemeType() == Types.LexemeType.POWER) {
             int factor = parseFactor();
-            currentLexeme = lexer.getLexeme();
+//            currentLexeme = lexer.getLexeme();
             return (int) Math.pow(power, factor);
         } else {
             return power;
@@ -83,14 +80,12 @@ public class Parser {
                     currentLexeme = lexer.getLexeme();
                     return res;
                 }
-
             } else {
                 if (lexeme.getLexemeType() == Types.LexemeType.NUMBER) {
                     currentLexeme = lexer.getLexeme();
                     return Integer.parseInt(lexeme.getLexemeText());
                 }
             }
-
         } else {
             if (currentLexeme.getLexemeType() == Types.LexemeType.LEFT_BR) {
 
@@ -102,7 +97,6 @@ public class Parser {
                     currentLexeme = lexer.getLexeme();
                     return res;
                 }
-
             } else {
                 if (currentLexeme.getLexemeType() == Types.LexemeType.NUMBER) {
                     Lexeme lexeme = currentLexeme;
