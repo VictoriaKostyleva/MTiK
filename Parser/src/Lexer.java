@@ -47,7 +47,7 @@ public class Lexer {
                 case '^':
                     return new Lexeme(Types.LexemeType.POWER, buffer.toString());
                 default:
-                    return new Lexeme(Types.LexemeType.EOF,"ERROR");//TODO
+                    return new Lexeme(Types.LexemeType.EOF,"ERROR");
             }
         } else {
             buffer.append((char)lastSymbol);
@@ -76,7 +76,7 @@ public class Lexer {
                     return new Lexeme(Types.LexemeType.POWER, buffer.toString());
                 default:
                     lastSymbol = -1;
-                    return new Lexeme(Types.LexemeType.EOF,"ERROR");//TODO
+                    return new Lexeme(Types.LexemeType.EOF,"ERROR");
             }
         }
     }

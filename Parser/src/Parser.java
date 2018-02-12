@@ -44,7 +44,6 @@ public class Parser {
             } else {
                 temp /= parseTerm();
             }
-            currentLexeme = lexer.getLexeme();//TODO
         }
         return temp;
     }
@@ -54,7 +53,7 @@ public class Parser {
 
         if (currentLexeme.getLexemeType() == Types.LexemeType.POWER) {
             int factor = parseFactor();
-            currentLexeme = lexer.getLexeme();//TODO
+            currentLexeme = lexer.getLexeme();
             return (int) Math.pow(power, factor);
         } else {
             return power;
